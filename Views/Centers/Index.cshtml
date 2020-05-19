@@ -1,0 +1,41 @@
+﻿@using System.Web.UI.HtmlControls
+@using IBlood002.Controllers
+@model IEnumerable<IBlood002.Models.Center>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Centers</h2>
+
+@Html.ActionLink("New Center", "New", "Centers", "", new { @class = "btn btn-primary" })
+
+
+@if (!Model.Any())
+{
+    <p>There is no center.</p>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var center in Model)
+            {
+                <tr>
+                    @*<td>@center.Name</td>*@
+                    <td>@Html.ActionLink(center.Name, "Details", "Centers", new { id = center.Id }, new { @class = "nav-link" })</td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+}

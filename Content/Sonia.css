@@ -1,0 +1,71 @@
+﻿
+/*Sonia*/
+.body {
+    background-color: #F0FFFF;
+    background-image: url('assets/img/pagina_principala.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Courier New";
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+h1 {
+    background-color: rgba(250, 250, 250, 0.8);
+    color: red;
+    text-align: center;
+    margin: auto;
+    width: 50%;
+}
+
+.group {
+    background-color: rgba(250, 250, 250, 0.3);
+    color: red;
+    width: 60%;
+}
+
+.x {
+    text-align: center;
+    width: 30%;
+    font-size: 200%;
+}
+
+.buton {
+    text-decoration: none;
+    background-color: #f44336;
+    color: white;
+    padding: 1px 1px;
+}
+
+.top {
+    text-decoration: none;
+    display: inline-block;
+    background-color: #f44336;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    position: absolute;
+    right: 15px;
+}
+
+.top:hover {
+    background-color: red;
+}
+
+img {
+    width: 100%;
+}
+
+@media only screen and (max-width: 700px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    h1 {
+        font-size: 400%;
+    }
+}
+
+end sonia

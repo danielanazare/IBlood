@@ -1,0 +1,50 @@
+﻿@using System.IdentityModel.Tokens
+@model IEnumerable<IBlood002.Models.Donor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Donors</h2>
+
+@Html.ActionLink("New Donor", "New", "Donors","", new { @class = "btn btn-primary"})
+
+@if (!Model.Any())
+{
+    <p>There is no donor.</p>
+}
+else
+{
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Blood Type</th>
+        </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var donor in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(donor.FirstName + ' ' + donor.LastName, "Edit", "Donors", new { id = donor.Id}, new { @class = "nav-link" } )</td>
+
+                    <td>@donor.BloodType.BloodTypeName
+                        @if (donor.BloodType.Rh)
+                        {
+                            <span>+</span>
+                        }
+                        else
+                        {<span>-</span>}
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+}
+
+
+

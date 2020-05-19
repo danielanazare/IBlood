@@ -1,0 +1,42 @@
+﻿@model IBlood002.Models.Center
+@{
+    ViewBag.Title = "CenterForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Center</h2>
+
+
+@*"Save" is the name of the action called when we POST the form*@
+
+@using (@Html.BeginForm("Save", "Centers"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber)
+        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Website)
+        @Html.TextBoxFor(m => m.Website, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Address)
+        @Html.TextBoxFor(m => m.Address, "{0:d MMM yyyy}", new { @class = "form-control" })
+    </div>
+
+    
+
+    //Hidden fields
+    @Html.HiddenFor(m => m.Id)
+
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+
+}
+

@@ -1,0 +1,21 @@
+﻿@model IBlood002.Models.Donor
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.FirstName @Model.LastName</h2>
+<ul>
+    <li>Blood Type: @Model.BloodType.BloodTypeName</li>
+    <li>Rh: @if (@Model.BloodType.Rh)
+            {
+                <span>Positive</span>
+            }
+            else
+            {
+                <span>Negative</span>
+            }
+    </li>
+    <li>Birth Date: @Model.BirthDate</li>
+</ul>
+
