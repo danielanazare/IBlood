@@ -4,3 +4,4 @@ obj/*
 packages/*
 IBlood*
 *.mdf
+App_Data/*
