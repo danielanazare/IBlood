@@ -54,8 +54,21 @@ namespace IBlood001.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Donor donor) //model binding
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new DonorFormViewModel(donor)
+                {
+                    
+                    BloodTypes = _context.BloodTypes.ToList()
+
+                };
+
+                return View("DonorForm", viewModel);
+            }
+
             if(donor.Id == 0) //new donor
                 _context.Donors.Add(donor); //it's just in the memory =? we need to save them in the db
             else //existing donor
@@ -98,9 +111,8 @@ namespace IBlood001.Controllers
             if (donor == null)
                 return HttpNotFound();
 
-            var viewModel = new DonorFormViewModel
+            var viewModel = new DonorFormViewModel(donor)
             {
-                Donor = donor,
                 BloodTypes = _context.BloodTypes.ToList()
             };
             return View("DonorForm", viewModel);
