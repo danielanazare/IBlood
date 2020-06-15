@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -21,7 +22,10 @@ namespace IBlood002.Controllers.Api
         // GET /api/donors
         public IEnumerable<DonorDto> GetDonors()
         {
-            return _context.Donors.ToList().Select(Mapper.Map<Donor,DonorDto>);
+            return _context.Donors
+                .Include(d =>d.BloodType)
+                .ToList()
+                .Select(Mapper.Map<Donor,DonorDto>);
 
         }
 

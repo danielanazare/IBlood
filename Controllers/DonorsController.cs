@@ -29,8 +29,9 @@ namespace IBlood001.Controllers
 
         public ActionResult Index()
         {
-            var donors = _context.Donors.Include(d => d.BloodType).ToList();
-            return View(donors);
+            //var donors = _context.Donors.Include(d => d.BloodType).ToList();
+           // return View(donors);
+           return View();
         }
 
         public ActionResult Details(int Id)

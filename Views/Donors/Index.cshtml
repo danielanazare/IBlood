@@ -10,22 +10,18 @@
 
 @Html.ActionLink("New Donor", "New", "Donors","", new { @class = "btn btn-primary"})
 
-@if (!Model.Any())
-{
-    <p>There is no donor.</p>
-}
-else
-{
-    <table class="table table-hover table-striped table-bordered">
+
+    <table id="donors" class="table table-hover table-striped table-bordered">
         <thead>
         <tr>
             <th scope="col">Name</th>
             <th scope="col">Blood Type</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
 
-            @foreach (var donor in Model)
+            @*@foreach (var donor in Model)
             {
                 <tr>
                     <td>@Html.ActionLink(donor.FirstName + ' ' + donor.LastName, "Edit", "Donors", new { id = donor.Id}, new { @class = "nav-link" } )</td>
@@ -38,13 +34,75 @@ else
                         else
                         {<span>-</span>}
                     </td>
+                    <td>
+                        <button data-customer-id="@donor.Id" class="btn-link js-delete">
+                            Delete
+                        </button>
+                    </td>
                 </tr>
-            }
+            }*@
         </tbody>
 
     </table>
 
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+
+            $("#donors").DataTable({
+                ajax: {
+                    url: "/api/donors",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "firstName",
+                        render: function(data, type, donor) {
+                            return "<a href= '/donors/edit/" + donor.id + "'>" + data + "</a>";
+
+                        }
+                    },
+                    {
+                        data: "bloodType.bloodTypeName"
+                        
+
+                    },
+                    {
+                        data: "id",
+                        render: function(data,type,donor) {
+                            return "<button class='btn-link js-delete' data-customer-id=" + donor.id + ">Delete</button>";
+                        }
+
+                    }
+                ]
+            });
+
+            $("#donors").on("click",
+                ".js-delete",
+                function() {
+                    var button = $(this);
+
+                    bootbox.confirm("Are you sure you want do delete this donor?",
+                        function(res) {
+                            if (res) {
+                                $.ajax({
+                                    url: "/api/donors/" + button.attr("data-customer-id"),
+                                    method: "DELETE",
+                                    success: function() {
+                                        console.log("Success");
+                                        button.parents("tr").remove();
+
+                                    }
+
+                                });
+                            }
+                        });
+
+                });
+        });
+    </script>
 }
-
-
 
