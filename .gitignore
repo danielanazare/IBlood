@@ -3,3 +3,5 @@ obj/*
 .vs/
 packages/*
 IBlood*
+*.mdf
+App_Data/*
