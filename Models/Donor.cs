@@ -32,6 +32,7 @@ namespace IBlood002.Models
         public string Phone { get; set; }
         
         [Display(Name = "Date of Birth")]
+        [Min18Years]
         public DateTime BirthDate { get; set; }
         public double Weight { get; set; }
         public double Height { get; set; }
