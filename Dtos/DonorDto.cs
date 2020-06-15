@@ -46,6 +46,7 @@ namespace IBlood002.Dtos
         [Required]
         
         public byte BloodTypeId { get; set; }
+        public BloodTypeDto BloodType { get; set; }
 
     }
 }
