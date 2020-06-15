@@ -10,52 +10,60 @@
 
 @using (@Html.BeginForm("Save", "Donors"))
 {
-    <div class="form-group">
-        @Html.LabelFor(m => m.FirstName)
-        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-        @Html.ValidationMessageFor(d => d.FirstName)
+    <div class="form-group row">
+        <div class=col-sm-6>
+            @Html.LabelFor(m => m.FirstName)
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.FirstName)
+        </div>
+        <div class="col-sm-6">
+            @Html.LabelFor(m => m.LastName)
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.LastName)
+        </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.LastName)
-        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-        @Html.ValidationMessageFor(d => d.LastName)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.CNP)
-        @Html.TextBoxFor(m => m.CNP, new { @class = "form-control" })
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.BirthDate)
-        @Html.TextBoxFor(m => m.BirthDate, "{0:d MMM yyyy}", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.BirthDate)
-    </div>
-   
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.BloodTypeId)
-        @Html.DropDownListFor(m => m.BloodTypeId, new SelectList(Model.BloodTypes, "Id", "BloodTypeName"), "Select blood type", new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Sex)
-        @Html.TextBoxFor(m => m.Sex, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Height)
-        @Html.TextBoxFor(m => m.Height, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Weight)
-        @Html.TextBoxFor(m => m.Weight, new { @class = "form-control" })
+    <div class="form-group row">
+        <div class=col-sm-6>
+            @Html.LabelFor(m => m.CNP)
+            @Html.TextBoxFor(m => m.CNP, new { @class = "form-control" })
+        </div>
+        <div class="col-sm-6">
+            @Html.LabelFor(m => m.BirthDate)
+            @Html.TextBoxFor(m => m.BirthDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.BirthDate)
+        </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email)
-        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+    <div class="form-group row">
+        <div class=col-sm-6>
+            @Html.LabelFor(m => m.BloodTypeId)
+            @Html.DropDownListFor(m => m.BloodTypeId, new SelectList(Model.BloodTypes, "Id", "BloodTypeName"), "Select blood type", new { @class = "form-control" })
+        </div>
+        <div class="col-sm-6">
+            @Html.LabelFor(m => m.Sex)
+            @Html.TextBoxFor(m => m.Sex, new { @class = "form-control" })
+        </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Phone)
-        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+
+    <div class="form-group row">
+        <div class=col-sm-6>
+            @Html.LabelFor(m => m.Height)
+            @Html.TextBoxFor(m => m.Height, new { @class = "form-control" })
+        </div>
+        <div class="col-sm-6">
+            @Html.LabelFor(m => m.Weight)
+            @Html.TextBoxFor(m => m.Weight, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class=col-sm-6>
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+        <div class="col-sm-6">
+            @Html.LabelFor(m => m.Phone)
+            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+        </div>
     </div>
     <div class="form-group">
         <div class="form-check">
@@ -63,6 +71,7 @@
             @Html.LabelFor(m => m.IsSubscribedToNewsletter, new { @class = "form-check-label" })
         </div>
     </div>
+
 
     //Hidden fields
     @Html.HiddenFor(m => m.Id)

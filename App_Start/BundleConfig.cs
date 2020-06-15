@@ -13,7 +13,8 @@ namespace IBlood002
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/bootbox.js",
                         "~/Scripts/DataTables/jquery.dataTables.js",
-                        "~/Scripts/DataTables/dataTables.bootstrap.js"));
+                        //"~/Scripts/DataTables/dataTables.bootstrap.js",
+                        "~/Scripts/DataTables/dataTables.bootstrap4.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -28,7 +29,9 @@ namespace IBlood002
                       "~/Content/bootstrap-lumen.css",
                       //"~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/DataTables/css/dataTables.bootstrap4.css"));
+                      "~/Content/DataTables/css/dataTables.bootstrap4.css"//,
+                     // "~/Content/DataTables/css/dataTables.bootstrap.css"
+                      ));
         }
     }
 }
